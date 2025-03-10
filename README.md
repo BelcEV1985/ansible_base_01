@@ -1,4 +1,4 @@
-**1** Попробуйте запустить playbook на окружении из test.yml, зафиксируйте значение, которое имеет факт some_fact для указанного хоста при выполнении playbook.
+**1.** Попробуйте запустить playbook на окружении из test.yml, зафиксируйте значение, которое имеет факт some_fact для указанного хоста при выполнении playbook.
 	
 проверяем плейбук
 **vi site.yml** 
@@ -20,7 +20,7 @@
 
 ----------------------	
 		
-**2**.Найдите файл с переменными (**group_vars**), в котором задаётся найденное в первом пункте значение, и поменяйте его на **all default fact**. 
+**2.** Найдите файл с переменными (**group_vars**), в котором задаётся найденное в первом пункте значение, и поменяйте его на **all default fact**. 
 в папке **group_vars** ищем тот yaml у который нам подходит. в нашем случае "**all**"
 применяем 
 
@@ -37,7 +37,7 @@
 
 ----------------------	
 	
-**3**.Воспользуйтесь подготовленным (используется **docker**) или создайте собственное окружение для проведения дальнейших испытаний.
+**3.** Воспользуйтесь подготовленным (используется **docker**) или создайте собственное окружение для проведения дальнейших испытаний.
 
 Контейнеры для ansible:
 
@@ -47,7 +47,7 @@ sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 
 ----------------------	
 
-**4**.Проведите запуск playbook на окружении из **prod.yml**. Зафиксируйте полученные значения **some_fact** для каждого из managed host.
+**4.** Проведите запуск playbook на окружении из **prod.yml**. Зафиксируйте полученные значения **some_fact** для каждого из managed host.
 
 Запускаем плейбук:
 **sudo ansible-playbook site.yml -i inventory/prod.yml**
@@ -58,13 +58,13 @@ sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 
 ----------------------	
 
-**5**. Добавьте факты в **group_vars** каждой из групп хостов так, чтобы для **some_fact** получились значения: для deb — **deb default fact**, для el — **el default fact**.
+**5.** Добавьте факты в **group_vars** каждой из групп хостов так, чтобы для **some_fact** получились значения: для deb — **deb default fact**, для el — **el default fact**.
 
 Меняем в файлах **deb\examp.yml** и **el\examp.yml**
 
 ----------------------	
 	
-**6**. Повторите запуск playbook на окружении prod.yml. Убедитесь, что выдаются корректные значения для всех хостов.
+**6.** Повторите запуск playbook на окружении prod.yml. Убедитесь, что выдаются корректные значения для всех хостов.
 
 **sudo ansible-playbook site.yml -i inventory/prod.yml**
 
@@ -74,7 +74,7 @@ sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 
 ----------------------	
 
-**7**. При помощи ansible-vault зашифруйте факты в **group_vars/deb** и **group_vars/el** с паролем **netology**.
+**7.** При помощи ansible-vault зашифруйте факты в **group_vars/deb** и **group_vars/el** с паролем **netology**.
 
 ansible-vault encrypt group_vars/deb/examp.yml
 
@@ -82,7 +82,7 @@ ansible-vault encrypt group_vars/el/examp.yml
 
 ----------------------	
 
-**8**.Запустите playbook на окружении **prod.yml**. При запуске ansible должен запросить у вас пароль. Убедитесь в работоспособности.
+**8.** Запустите playbook на окружении **prod.yml**. При запуске ansible должен запросить у вас пароль. Убедитесь в работоспособности.
 
 **sudo ansible-playbook site.yml -i inventory/prod.yml --ask-vault-pass**
 
@@ -92,7 +92,7 @@ ansible-vault encrypt group_vars/el/examp.yml
 
 ----------------------	
 
-**9**.Посмотрите при помощи ansible-doc список плагинов для подключения. Выберите подходящий для работы на control node.
+**9.** Посмотрите при помощи ansible-doc список плагинов для подключения. Выберите подходящий для работы на control node.
 
 Получим список плагинов:
 **ansible-doc -t connection -l**
@@ -103,7 +103,7 @@ ansible-vault encrypt group_vars/el/examp.yml
 
 ----------------------	 
 
-**10**.В **prod.yml** добавьте новую группу хостов с именем local, в ней разместите localhost с необходимым типом подключения. 
+**10.** В **prod.yml** добавьте новую группу хостов с именем local, в ней разместите localhost с необходимым типом подключения. 
 Добавляет в указанный файл блок:
 
 ---yml
@@ -115,7 +115,7 @@ ansible-vault encrypt group_vars/el/examp.yml
 
 ----------------------	 
 	
-**11**.Запустите playbook на окружении **prod.yml**. При запуске ansible должен запросить у вас пароль. Убедитесь, что факты **some_fact** для каждого из хостов определены из верных group_vars.
+**11.** Запустите playbook на окружении **prod.yml**. При запуске ansible должен запросить у вас пароль. Убедитесь, что факты **some_fact** для каждого из хостов определены из верных group_vars.
 
 **sudo ansible-playbook site.yml -i inventory/prod.yml --ask-vault-pass**
 
