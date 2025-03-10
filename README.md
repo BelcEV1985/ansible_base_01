@@ -53,7 +53,7 @@ sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 **sudo ansible-playbook site.yml -i inventory/prod.yml**
 
 
-![04_prode_some_fact](https://github.com/user-attachments/assets/22eac719-1d6f-4a3e-9f97-253d89eff883)
+![04_prode_some_fact](https://github.com/user-attachments/assets/8761df99-de69-4919-8f24-b3d59f09ad0c)
 
 
 ----------------------	
