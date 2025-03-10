@@ -1,4 +1,4 @@
-1.Попробуйте запустить playbook на окружении из test.yml, зафиксируйте значение, которое имеет факт some_fact для указанного хоста при выполнении playbook.
+**1** Попробуйте запустить playbook на окружении из test.yml, зафиксируйте значение, которое имеет факт some_fact для указанного хоста при выполнении playbook.
 	
 проверяем плейбук
 **vi site.yml** 
@@ -14,6 +14,8 @@
 
 **some_fact = 12**	
 
+
+![01_some_fact](https://github.com/user-attachments/assets/4222c9f8-abbc-4856-98d1-8c4a5b2e3a08)
 
 
 ----------------------	
@@ -31,6 +33,7 @@
 	}
 
 
+![02_all_default_fact](https://github.com/user-attachments/assets/6fb1f088-810e-42f2-bd04-ee98394635e6)
 
 ----------------------	
 	
@@ -41,38 +44,15 @@
 sudo docker run -dit --name centos7 pycontribs/centos:7 sleep 6000000
 sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 
-
-
 ----------------------	
 
-**5**.Проведите запуск playbook на окружении из **prod.yml**. Зафиксируйте полученные значения **some_fact** для каждого из managed host.
+**4**.Проведите запуск playbook на окружении из **prod.yml**. Зафиксируйте полученные значения **some_fact** для каждого из managed host.
 
 Запускаем плейбук:
 **sudo ansible-playbook site.yml -i inventory/prod.yml**
 
 
-	ok: [ubuntu]
-	ok: [centos7]
-
-	TASK [Print OS] ************************************************************************************************************************************************************************************************************
-	ok: [centos7] => {
-		"msg": "CentOS"
-	}
-	ok: [ubuntu] => {
-		"msg": "Ubuntu"
-	}
-
-	TASK [Print fact] **********************************************************************************************************************************************************************************************************
-	ok: [centos7] => {
-		"msg": "el"
-	}
-	ok: [ubuntu] => {
-		"msg": "deb"
-	}
-
-	PLAY RECAP *****************************************************************************************************************************************************************************************************************
-	centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
-	ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+![04_prode_some_fact](https://github.com/user-attachments/assets/22eac719-1d6f-4a3e-9f97-253d89eff883)
 
 
 ----------------------	
@@ -88,6 +68,8 @@ sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 **sudo ansible-playbook site.yml -i inventory/prod.yml**
 
 
+![06_prode_some_fact](https://github.com/user-attachments/assets/e1b4f005-7825-4abc-be6e-374e2f3e2a97)
+
 
 ----------------------	
 
@@ -96,13 +78,14 @@ sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 ansible-vault encrypt group_vars/deb/examp.yml
 ansible-vault encrypt group_vars/el/examp.yml
 
-
 ----------------------	
 
 **8**.Запустите playbook на окружении **prod.yml**. При запуске ansible должен запросить у вас пароль. Убедитесь в работоспособности.
 
 **sudo ansible-playbook site.yml -i inventory/prod.yml --ask-vault-pass**
 
+
+![08_vault_pass](https://github.com/user-attachments/assets/36da6a13-6285-4bcd-891a-c5fdc2f0aea8)
 
 
 ----------------------	
@@ -116,6 +99,7 @@ ansible-vault encrypt group_vars/el/examp.yml
 **ansible.builtin.local** - **execute on controller**
 
 
+![09_connection_plugins](https://github.com/user-attachments/assets/a68673ac-8937-4c56-ba61-4e5f3737328a)
 
 
 ----------------------	 
@@ -123,17 +107,21 @@ ansible-vault encrypt group_vars/el/examp.yml
 **10**.В **prod.yml** добавьте новую группу хостов с именем local, в ней разместите localhost с необходимым типом подключения. 
 Добавляет в указанный файл блок:
 
+---yml
 	  local:
 	    hosts:
 	      localhost:
 	        ansible_connection: local
-
+---
 
 ----------------------	 
 	
 **11**.Запустите playbook на окружении **prod.yml**. При запуске ansible должен запросить у вас пароль. Убедитесь, что факты **some_fact** для каждого из хостов определены из верных group_vars.
 
 **sudo ansible-playbook site.yml -i inventory/prod.yml --ask-vault-pass**
+
+
+![11_prod](https://github.com/user-attachments/assets/223bebf7-6da2-4cc3-bc60-2035f315f5f7)
 
 
 ----------------------
