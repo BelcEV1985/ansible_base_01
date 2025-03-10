@@ -42,6 +42,7 @@
 Контейнеры для ansible:
 
 sudo docker run -dit --name centos7 pycontribs/centos:7 sleep 6000000
+
 sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 
 ----------------------	
@@ -76,6 +77,7 @@ sudo docker run -dit --name ubuntu pycontribs/ubuntu:latest sleep 6000000
 **7**. При помощи ansible-vault зашифруйте факты в **group_vars/deb** и **group_vars/el** с паролем **netology**.
 
 ansible-vault encrypt group_vars/deb/examp.yml
+
 ansible-vault encrypt group_vars/el/examp.yml
 
 ----------------------	
