@@ -106,14 +106,12 @@ ansible-vault encrypt group_vars/el/examp.yml
 **10.** В **prod.yml** добавьте новую группу хостов с именем local, в ней разместите localhost с необходимым типом подключения. 
 Добавляет в указанный файл блок:
 
----yml
 
 	  local:
 	    hosts:
 	      localhost:
 	        ansible_connection: local
-	 
----
+
 
 ----------------------	 
 	
