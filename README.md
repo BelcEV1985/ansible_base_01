@@ -97,9 +97,6 @@ ansible-vault encrypt group_vars/el/examp.yml
 Получим список плагинов:
 **ansible-doc -t connection -l**
 
-Для работы на control node:
-**ansible.builtin.local** - **execute on controller**
-
 
 ![09_connection_plugins](https://github.com/user-attachments/assets/a68673ac-8937-4c56-ba61-4e5f3737328a)
 
