@@ -107,10 +107,12 @@ ansible-vault encrypt group_vars/el/examp.yml
 Добавляет в указанный файл блок:
 
 ---yml
+
 	  local:
 	    hosts:
 	      localhost:
 	        ansible_connection: local
+	 
 ---
 
 ----------------------	 
